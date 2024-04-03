@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Afflictions>
+ <InternalDamage
+    name="9P型变革"
+    identifier="triton_9P"
+    description="奇迹之海专为终末地研制的加强型特殊伤害"
+    type="triton_7L"
+    causeofdeathdescription=""
+    selfcauseofdeathdescription=""
+    limbspecific="true"
+    maxstrength="150"
+    karmachangeonapplied="-1"
+    damageoverlayalpha="2"
+    WeaponsSkillGain="1.0">
+    <Description
+      textidentifier="奇迹之海专为终末地研制的加强型特殊伤害"
+      minstrength="0"
+      maxstrength="40"/>
+    <Description
+      textidentifier="奇迹之海专为终末地研制的加强型特殊伤害"
+      minstrength="40"
+      maxstrength="200"/>
+    <Effect minstrength="0" maxstrength="200" multiplybymaxvitality="true"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="2"
+      dialogflag="gunshotwound"/>
+    <!--修改文件路径, "%ModDir%" 替换为 "%ModDir%/Content_2" (Erthex)-->
+    <icon texture="%ModDir%/Content_2/png/AZ.png" sourcerect="0,1137,90,91" color="255,255,255,255" origin="0,0"/>
+     <Effect minstrength="0" maxstrength="10"
+      strengthchange="-0.25"
+      minchromaticaberration="0.0"
+      maxchromaticaberration="0.2"
+      minspeedmultiplier="1.0"
+      maxspeedmultiplier="0.9">
+      <StatusEffect target="Character">
+        <Conditional NeedsAir="false"/>
+        <Affliction identifier="organdamage" amount="3" />
+      </StatusEffect>
+      </Effect>
+  </InternalDamage>
+</Afflictions>

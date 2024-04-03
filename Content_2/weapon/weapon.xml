@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--33 处修改, 修改文件路径, "%ModDir%" 替换为 "%ModDir%/Content_2" (Erthex)-->
+<Items>
+<!--武器-->
+  <!--修改名称, 莫洛喷改为莫洛 (Erthex)-->
+  <Item name="莫洛" identifier="Endfiled_kv" subcategory="终末地" category="weapon" cargocontaineridentifier="tsm_metalcrate" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" scale="0.15" impactsoundtag="impact_metal_light" description="">
+    <!--贴图-->
+    <InventoryIcon texture="%ModDir%/Content_2/png/AZ.png" sourcerect="201,0,754,241" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content_2/png/AZ.png" sourcerect="201,0,754,241" depth="0.55" origin="0.5,0.5" />
+    <!--局内售卖-->
+     <Price baseprice="2324" buyingpricemultiplier="1" minleveldifficulty="0">
+      <Price locationtype="city" multiplier="1.35" minavailable="1" maxavailable="3" />
+      <Price locationtype="research" multiplier="1.25" minavailable="0" maxavailable="1" sold="false" />
+      <Price locationtype="military" multiplier="1.10" minavailable="0" maxavailable="2" />
+      <Price locationtype="mine" multiplier="1.10" minavailable="0" maxavailable="1" />
+      <Price locationtype="outpost" multiplier="1.10" minavailable="0" maxavailable="1" />
+    </Price>
+    <!--分解-->
+    <Deconstruct time="10">
+      <Item identifier="titaniumaluminiumalloy" probability="1" />
+      <Item identifier="iron" probability="1" />
+    </Deconstruct>
+    <!--制作-->
+    <Fabricate suitablefabricators="fabricator" requiredtime="40" requiresrecipe="false">
+      <RequiredSkill identifier="weapons" level="30" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+      <RequiredItem identifier="iron" amount="3" />
+      <RequiredItem identifier="tin" amount="2" />
+      <RequiredItem identifier="fpgacircuit" amount="1" />
+    </Fabricate>
+    <Body width="210" height="70" density="52" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="57,-2" aimpos="57,-2" handle1="-185,-43" handle2="80,25" holdangle="-35" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="Character" SpeedMultiplier="0.75" setvalue="true" />
+      <StatusEffect type="OnUse" target="Character" SpeedMultiplier="0.5" setvalue="true"></StatusEffect>
+    </Holdable>
+    <RangedWeapon reload="0.225" weapondamagemodifier="1" holdtrigger="true" barrelpos="370,30" spread="10" unskilledspread="50" combatPriority="85" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="229,221,215,255" />
+      <Sound file="%ModDir%/Content_2/ogg/21.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="%ModDir%/Content_2/ogg/22.ogg" type="OnUse" range="3000" />
+      <Sound file="%ModDir%/Content_2/ogg/23.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="Always" target="This" unskilledspread="-40">
+        <Conditional unskilledspread="gt 7.5" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This,Character" unskilledspread="+20" disabledeltatime="true" comparison="and">
+        <Conditional unskilledspread="lt 30" />
+        <Conditional CanRun="true" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This,Character" unskilledspread="+10" disabledeltatime="true" comparison="and">
+        <Conditional unskilledspread="lt 15" />
+        <Conditional CanRun="false" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" spread="-20">
+        <Conditional spread="gt 1.5" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This,Character" spread="+6" disabledeltatime="true" comparison="and">
+        <Conditional spread="lt 6" />
+        <Conditional CanRun="true" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This,Character" spread="+4" disabledeltatime="true" comparison="and">
+        <Conditional spread="lt 3" />
+        <Conditional CanRun="false" />
+      </StatusEffect>
+      <StatusEffect type="OnUse">
+        <Explosion range="100.0" force="0.3" camerashake="5" shockwave="false" smoke="false" flames="false" flash="false" sparks="false" underwaterbubble="false" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" delay="0.8" forceplaysounds="true">
+        <Sound file="%ModDir%/Content_2/ogg/bullet_metal1.ogg" type="OnUse" range="1500" selectionmode="Random" />
+        <Sound file="%ModDir%/Content_2/ogg/bullet_metal2.ogg" type="OnUse" range="1500" />
+        <Sound file="%ModDir%/Content_2/ogg/bullet_metal3.ogg" type="OnUse" range="1500" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This">
+        <Conditional Condition="eq 0" targetcontaineditem="true" />
+        <Sound file="%ModDir%/Content_2/ogg/R1.ogg" range="2000" loop="false" />
+      </StatusEffect>
+      <StatusEffect type="OnUse">
+        <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems items="Endfiled_kvmagazine" type="Contained" msg="ItemMsgAmmoRequired" />
+      <RequiredSkill identifier="weapons" level="45" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" itempos="-35,-50" containedstateindicatorstyle="bullet" containedstateindicatorslot="0" containedspritedepth="0.56">
+      <Containable items="Endfiled_kvmagazine" />
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+      <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="flashlight" hide="false" itempos="33,2" setactive="true" />
+      </SubContainer>
+    </ItemContainer>
+    <aitarget sightrange="4500" soundrange="6000" fadeouttime="10" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.2" />
+    </Quality>
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
+  <Item name="QBZ191" identifier="Endfiled_QBZ191" subcategory="终末地" category="weapon" cargocontaineridentifier="tsm_metalcrate" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" scale="0.135" impactsoundtag="impact_metal_light" description="">
+    <!--贴图-->
+    <InventoryIcon texture="%ModDir%/Content_2/png/AZ.png" sourcerect="212,282,753,228" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content_2/png/AZ.png" sourcerect="212,282,753,228" depth="0.55" origin="0.5,0.5" />
+    <!--局内售卖-->
+     <Price baseprice="1924" buyingpricemultiplier="1" minleveldifficulty="0">
+      <Price locationtype="city" multiplier="1.35" minavailable="1" maxavailable="3" />
+      <Price locationtype="research" multiplier="1.25" minavailable="0" maxavailable="1" sold="false" />
+      <Price locationtype="military" multiplier="1.10" minavailable="0" maxavailable="2" />
+      <Price locationtype="mine" multiplier="1.10" minavailable="0" maxavailable="1" />
+      <Price locationtype="outpost" multiplier="1.10" minavailable="0" maxavailable="1" />
+    </Price>
+    <!--分解-->
+    <Deconstruct time="10">
+      <Item identifier="titaniumaluminiumalloy" probability="1" />
+      <Item identifier="iron" probability="1" />
+    </Deconstruct>
+    <!--制作-->
+    <Fabricate suitablefabricators="fabricator" requiredtime="40" requiresrecipe="false">
+      <RequiredSkill identifier="weapons" level="30" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="1" />
+      <RequiredItem identifier="iron" amount="4" />
+      <RequiredItem identifier="titanium" amount="2" />
+      <RequiredItem identifier="fpgacircuit" amount="2" />
+    </Fabricate>
+    <Body width="210" height="70" density="52" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="57,-6" aimpos="57,-6" handle1="-185,-43" handle2="80,25" holdangle="-35" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="Character" SpeedMultiplier="0.75" setvalue="true" />
+      <StatusEffect type="OnUse" target="Character" SpeedMultiplier="0.5" setvalue="true"></StatusEffect>
+    </Holdable>
+    <RangedWeapon reload="0.12" weapondamagemodifier="1" holdtrigger="true" barrelpos="370,30" spread="10" unskilledspread="50" combatPriority="85" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="229,221,215,255" />
+      <Sound file="%ModDir%/Content_2/ogg/31.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="%ModDir%/Content_2/ogg/32.ogg" type="OnUse" range="3000" />
+      <Sound file="%ModDir%/Content_2/ogg/33.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="Always" target="This" unskilledspread="-30">
+        <Conditional unskilledspread="gt 7.5" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This,Character" unskilledspread="+10" disabledeltatime="true" comparison="and">
+        <Conditional unskilledspread="lt 30" />
+        <Conditional CanRun="true" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This,Character" unskilledspread="+5" disabledeltatime="true" comparison="and">
+        <Conditional unskilledspread="lt 15" />
+        <Conditional CanRun="false" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" spread="-10">
+        <Conditional spread="gt 1.5" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This,Character" spread="+3" disabledeltatime="true" comparison="and">
+        <Conditional spread="lt 6" />
+        <Conditional CanRun="true" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This,Character" spread="+2" disabledeltatime="true" comparison="and">
+        <Conditional spread="lt 3" />
+        <Conditional CanRun="false" />
+      </StatusEffect>
+      <StatusEffect type="OnUse">
+        <Explosion range="100.0" force="0.3" camerashake="5" shockwave="false" smoke="false" flames="false" flash="false" sparks="false" underwaterbubble="false" />
+      </StatusEffect>
+     <StatusEffect type="OnUse" delay="0.8" forceplaysounds="true">
+        <Sound file="%ModDir%/Content_2/ogg/bullet_metal1.ogg" type="OnUse" range="1500" selectionmode="Random" />
+        <Sound file="%ModDir%/Content_2/ogg/bullet_metal2.ogg" type="OnUse" range="1500" />
+        <Sound file="%ModDir%/Content_2/ogg/bullet_metal3.ogg" type="OnUse" range="1500" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This">
+        <Conditional Condition="eq 0" targetcontaineditem="true" />
+        <Sound file="%ModDir%/Content_2/ogg/R1.ogg" range="2000" loop="false" />
+      </StatusEffect>
+      <StatusEffect type="OnUse">
+        <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems items="Endfiled_QBZ191magazine" type="Contained" msg="ItemMsgAmmoRequired" />
+      <RequiredSkill identifier="weapons" level="45" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" itempos="-35,-50" containedstateindicatorstyle="bullet" containedstateindicatorslot="0" containedspritedepth="0.56">
+      <Containable items="Endfiled_QBZ191magazine" />
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+      <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="flashlight" hide="false" itempos="33,2" setactive="true" />
+      </SubContainer>
+    </ItemContainer>
+    <aitarget sightrange="4500" soundrange="6000" fadeouttime="10" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.25" />
+    </Quality>
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
+  <Item name="AK" identifier="Endfiled_ak" subcategory="终末地" category="weapon" cargocontaineridentifier="tsm_metalcrate" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" scale="0.15" impactsoundtag="impact_metal_light" description="">
+    <!--贴图-->
+    <InventoryIcon texture="%ModDir%/Content_2/png/AZ.png" sourcerect="209,599,756,252" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content_2/png/AZ.png" sourcerect="209,599,756,252" depth="0.55" origin="0.5,0.5" />
+    <!--局内售卖-->
+     <Price baseprice="1924" buyingpricemultiplier="1" minleveldifficulty="0">
+      <Price locationtype="city" multiplier="1.35" minavailable="1" maxavailable="3" />
+      <Price locationtype="research" multiplier="1.25" minavailable="0" maxavailable="1" sold="false" />
+      <Price locationtype="military" multiplier="1.10" minavailable="0" maxavailable="2" />
+      <Price locationtype="mine" multiplier="1.10" minavailable="0" maxavailable="1" />
+      <Price locationtype="outpost" multiplier="1.10" minavailable="0" maxavailable="1" />
+    </Price>
+    <!--分解-->
+    <Deconstruct time="10">
+      <Item identifier="titaniumaluminiumalloy" probability="1" />
+      <Item identifier="iron" probability="1" />
+    </Deconstruct>
+    <!--制作-->
+    <Fabricate suitablefabricators="fabricator" requiredtime="40" requiresrecipe="false">
+      <RequiredSkill identifier="weapons" level="30" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="1" />
+      <RequiredItem identifier="iron" amount="4" />
+      <RequiredItem identifier="titanium" amount="2" />
+      <RequiredItem identifier="fpgacircuit" amount="2" />
+    </Fabricate>
+    <Body width="210" height="70" density="52" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="57,-7" aimpos="57,-7" handle1="-185,-43" handle2="80,25" holdangle="-35" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="Character" SpeedMultiplier="0.75" setvalue="true" />
+      <StatusEffect type="OnUse" target="Character" SpeedMultiplier="0.5" setvalue="true"></StatusEffect>
+    </Holdable>
+    <RangedWeapon reload="0.135" weapondamagemodifier="1.2" holdtrigger="true" barrelpos="370,30" spread="10" unskilledspread="50" combatPriority="85" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="229,221,215,255" />
+      <Sound file="%ModDir%/Content_2/ogg/11.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="%ModDir%/Content_2/ogg/12.ogg" type="OnUse" range="3000" />
+      <Sound file="%ModDir%/Content_2/ogg/13.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="Always" target="This" unskilledspread="-30">
+        <Conditional unskilledspread="gt 7.5" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This,Character" unskilledspread="+10" disabledeltatime="true" comparison="and">
+        <Conditional unskilledspread="lt 30" />
+        <Conditional CanRun="true" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This,Character" unskilledspread="+5" disabledeltatime="true" comparison="and">
+        <Conditional unskilledspread="lt 15" />
+        <Conditional CanRun="false" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" spread="-10">
+        <Conditional spread="gt 1.5" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This,Character" spread="+3" disabledeltatime="true" comparison="and">
+        <Conditional spread="lt 6" />
+        <Conditional CanRun="true" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This,Character" spread="+2" disabledeltatime="true" comparison="and">
+        <Conditional spread="lt 3" />
+        <Conditional CanRun="false" />
+      </StatusEffect>
+      <StatusEffect type="OnUse">
+        <Explosion range="100.0" force="0.3" camerashake="5" shockwave="false" smoke="false" flames="false" flash="false" sparks="false" underwaterbubble="false" />
+      </StatusEffect>
+     <StatusEffect type="OnUse" delay="0.8" forceplaysounds="true">
+        <Sound file="%ModDir%/Content_2/ogg/bullet_metal1.ogg" type="OnUse" range="1500" selectionmode="Random" />
+        <Sound file="%ModDir%/Content_2/ogg/bullet_metal2.ogg" type="OnUse" range="1500" />
+        <Sound file="%ModDir%/Content_2/ogg/bullet_metal3.ogg" type="OnUse" range="1500" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This">
+        <Conditional Condition="eq 0" targetcontaineditem="true" />
+        <Sound file="%ModDir%/Content_2/ogg/R1.ogg" range="2000" loop="false" />
+      </StatusEffect>
+      <StatusEffect type="OnUse">
+        <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems items="Endfiled_akmagazine" type="Contained" msg="ItemMsgAmmoRequired" />
+      <RequiredSkill identifier="weapons" level="45" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" itempos="-35,-50" containedstateindicatorstyle="bullet" containedstateindicatorslot="0" containedspritedepth="0.56">
+      <Containable items="Endfiled_akmagazine" />
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+      <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="flashlight" hide="false" itempos="33,2" setactive="true" />
+      </SubContainer>
+    </ItemContainer>
+    <aitarget sightrange="4500" soundrange="6000" fadeouttime="10" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+    </Quality>
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
+<!--子弹-->
+   <Item name="kvbullet" identifier="Endfiled_kvbullet" subcategory="终末地" category="Weapon" interactthroughwalls="true" cargocontaineridentifier="metalcrate" hideinmenus="true" tags="smallitem,Endfiled_kvbullet" Scale="0.5" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="832,960,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="189,299,23,11" depth="0.55" origin="0.5,0.5" />
+    <Body width="23" height="10" density="15" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <!--When fired, spawns 8 projectiles simultaneously.-->
+    <Projectile characterusable="false" hitscan="true" hitscancount="6" removeonhit="true" spread="18">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,255,115,100" scalemultiplier="1,0.5" />
+      <Attack structuredamage="1" targetforce="7.5" itemdamage="4" severlimbsprobability="0.2" penetration="0.15">
+       <Affliction identifier="gunshotwound" strength="6" />
+        <Affliction identifier="triton_9P" strength="6" />
+        <Affliction identifier="bleeding" strength="8" />
+        <Affliction identifier="stun" strength="0.1" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+        <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="1" scalemax="2" />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" stackable="false" delay="1">
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
+  <Item name="" identifier="Endfiled_QBZ191bullet" category="Weapon" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="smallitem,Endfiled_QBZ191" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.5">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="896,960,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="195,282,17,6" depth="0.55" origin="0.5,0.5" />
+    <Body width="17" height="6" density="30" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,200,200,175" scalemultiplier="1,0.8" />
+      <Attack structuredamage="4" targetforce="7.5" itemdamage="4" severlimbsprobability="0.2" penetration="0.33">
+        <Affliction identifier="gunshotwound" strength="7" />
+        <Affliction identifier="triton_9P" strength="8" />
+        <Affliction identifier="bleeding" strength="10" />
+        <Affliction identifier="stun" strength="0.1" />
+        <Affliction identifier="stun" strength="0.5" probability="0.01" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="2,2" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+        <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+      </StatusEffect>
+      <!-- hmg rounds should not exist outside magazines -->
+      <StatusEffect type="OnNotContained" target="This" stackable="false" delay="1">
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+<!--弹匣-->
+  <Item name="KV莫洛弹匣" identifier="Endfiled_kvmagazine" subcategory="终末地" description="" scale="0.23" category="weapon" health="12" maxstacksize="2" cargocontaineridentifier="tsm_metalcrate" tags="tsm_magazine,smallitem,tsm_zd,Endfiled_kvmagazine" impactsoundtag="impact_metal_light">
+    <!--名称,ID,描述,缩放,分类,叠堆,货箱分类,标签,音效标签-->
+    <InventoryIcon texture="%ModDir%/Content_2/png/AZ.png" sourcerect="9,81,116,120" />
+    <Sprite texture="%ModDir%/Content_2/png/AZ.png" depth="0.55" sourcerect="9,81,116,120" origin="0.5,0.5" />
+    <Body width="30" height="58" density="50" />
+   <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="Endfiled_kvbullet" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="Endfiled_kvbullet" />
+      <StatusEffect type="OnUse" target="This" condition="-1" disabledeltatime="true">
+        <SpawnItem identifiers="Endfiled_kvbullet" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <PreferredContainer primary="Endfiled_kv" minamount="1" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="wreckarmcab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="wreckstoragecab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.1" />
+    <PreferredContainer primary="secarmcab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="abandonedsecarmcab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <!--前哨、城市、研究、军事、矿山-->
+    <!--outpost\city\research\military\mine-->
+    <Price baseprice="224" buyingpricemultiplier="1" minleveldifficulty="0">
+      <Price locationtype="outpost" multiplier="1.5" minavailable="0" maxavailable="1" />
+      <Price locationtype="city" multiplier="1.35" minavailable="1" maxavailable="2" />
+      <Price locationtype="research" multiplier="1.25" sold="false" />
+      <Price locationtype="military" multiplier="1.10" minavailable="2" maxavailable="4" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <!--分解-->
+    <Deconstruct time="8">
+      <Item identifier="aluminium" />
+      <Item identifier="titaniumaluminiumalloy" />
+    </Deconstruct>
+    <!--制作-->
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="false">
+      <RequiredSkill identifier="weapons" level="20" />
+      <RequiredItem identifier="magnesium" amount="1" />
+      <RequiredItem identifier="iron" amount="1"/>
+      <RequiredItem identifier="lead" amount="1" />
+    </Fabricate>
+    <Fabricate suitablefabricators="fabricator" requiredtime="15" requiresrecipe="false" displayname="recycleitem">
+     <RequiredSkill identifier="weapons" level="20" />
+      <RequiredItem identifier="iron" />
+      <RequiredItem identifier="magnesium" amount="0.5" />
+      <RequiredItem identifier="Endfiled_kvmagazine" mincondition="0.0" usecondition="false" />
+    </Fabricate>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
+  <Item name="QBZ191弹匣" identifier="Endfiled_QBZ191magazine" subcategory="终末地" description="" scale="0.23" category="weapon" health="35" maxstacksize="3" cargocontaineridentifier="tsm_metalcrate" tags="tsm_magazine,smallitem,tsm_zd,Endfiled_QBZ191magazine" impactsoundtag="impact_metal_light">
+    <!--名称,ID,描述,缩放,分类,叠堆,货箱分类,标签,音效标签-->
+    <InventoryIcon texture="%ModDir%/Content_2/png/AZ.png" sourcerect="35,314,90,138" />
+    <Sprite texture="%ModDir%/Content_2/png/AZ.png" depth="0.55" sourcerect="35,314,90,138" origin="0.5,0.5" />
+    <Body width="30" height="58" density="50" />
+   <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="Endfiled_QBZ191bullet" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="Endfiled_QBZ191bullet" />
+      <StatusEffect type="OnUse" target="This" condition="-1" disabledeltatime="true">
+        <SpawnItem identifiers="Endfiled_QBZ191bullet" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <PreferredContainer primary="Endfiled_kv" minamount="1" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="wreckarmcab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="wreckstoragecab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.1" />
+    <PreferredContainer primary="secarmcab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="abandonedsecarmcab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <!--前哨、城市、研究、军事、矿山-->
+    <!--outpost\city\research\military\mine-->
+    <Price baseprice="234" buyingpricemultiplier="1" minleveldifficulty="0">
+      <Price locationtype="outpost" multiplier="1.5" minavailable="0" maxavailable="1" />
+      <Price locationtype="city" multiplier="1.35" minavailable="1" maxavailable="2" />
+      <Price locationtype="research" multiplier="1.25" sold="false" />
+      <Price locationtype="military" multiplier="1.10" minavailable="2" maxavailable="4" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <!--分解-->
+    <Deconstruct time="8">
+      <Item identifier="aluminium" />
+      <Item identifier="titaniumaluminiumalloy" />
+    </Deconstruct>
+    <!--制作-->
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="false">
+      <RequiredSkill identifier="weapons" level="20" />
+      <RequiredItem identifier="magnesium" amount="0.5" />
+      <RequiredItem identifier="iron" amount="2"/>
+      <RequiredItem identifier="lead" amount="1.5" />
+    </Fabricate>
+    <Fabricate suitablefabricators="fabricator" requiredtime="15" requiresrecipe="false" displayname="recycleitem">
+     <RequiredSkill identifier="weapons" level="20" />
+      <RequiredItem identifier="iron" />
+      <RequiredItem identifier="magnesium" amount="0.5" />
+      <RequiredItem identifier="Endfiled_QBZ191magazine" mincondition="0.0" usecondition="false" />
+    </Fabricate>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
+  <Item name="AK弹匣" identifier="Endfiled_akmagazine" subcategory="终末地" description="" scale="0.23" category="weapon" health="30" maxstacksize="3" cargocontaineridentifier="tsm_metalcrate" tags="tsm_magazine,smallitem,tsm_zd,Endfiled_QBZ191magazine" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="%ModDir%/Content_2/png/AZ.png" sourcerect="0,633,160,185" />
+    <Sprite texture="%ModDir%/Content_2/png/AZ.png" depth="0.55" sourcerect="0,633,160,185" origin="0.5,0.5" />
+    <Body width="30" height="58" density="50" />
+   <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="Endfiled_QBZ191bullet" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="Endfiled_QBZ191bullet" />
+      <StatusEffect type="OnUse" target="This" condition="-1" disabledeltatime="true">
+        <SpawnItem identifiers="Endfiled_QBZ191bullet" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <PreferredContainer primary="Endfiled_kv" minamount="1" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="wreckarmcab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="wreckstoragecab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.1" />
+    <PreferredContainer primary="secarmcab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="abandonedsecarmcab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <Price baseprice="234" buyingpricemultiplier="1" minleveldifficulty="0">
+      <Price locationtype="outpost" multiplier="1.5" minavailable="0" maxavailable="1" />
+      <Price locationtype="city" multiplier="1.35" minavailable="1" maxavailable="2" />
+      <Price locationtype="research" multiplier="1.25" sold="false" />
+      <Price locationtype="military" multiplier="1.10" minavailable="2" maxavailable="4" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <Deconstruct time="8">
+      <Item identifier="aluminium" />
+      <Item identifier="titaniumaluminiumalloy" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="false">
+      <RequiredSkill identifier="weapons" level="20" />
+      <RequiredItem identifier="potassium" amount="1" />
+      <RequiredItem identifier="iron" amount="2"/>
+      <RequiredItem identifier="lead" amount="1" />
+    </Fabricate>
+    <Fabricate suitablefabricators="fabricator" requiredtime="15" requiresrecipe="false" displayname="recycleitem">
+     <RequiredSkill identifier="weapons" level="20" />
+      <RequiredItem identifier="iron" />
+      <RequiredItem identifier="potassium" amount="0.5" />
+      <RequiredItem identifier="Endfiled_akmagazine" mincondition="0.0" usecondition="false" />
+    </Fabricate>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
+</Items>
