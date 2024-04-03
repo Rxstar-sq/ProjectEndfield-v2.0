@@ -464,4 +464,37 @@
 		<WifiComponent range="35000.0" LinkToChat="true" MinChatMessageInterval="0.0"/>
 	</Item>
 	
+
+    <!-- M4 sopⅡ -->
+    <Item identifier="ERWA_M4sopⅡH_HairStyle" category="Equipment" tags="smallitem,clothing" cargocontaineridentifier="crate_endfield" scale="0.5">
+        <PreferredContainer primary="crewcab" amount="1" spawnprobability="0.1" notcampaign="true" />
+        <!-- 合成要求 -->
+        <Fabricate suitablefabricators="fabricator" requiredtime="5" requiresrecipe="false">
+            <Item identifier="plastic" amount="1" />
+        </Fabricate>
+        <!-- 分解产物 -->
+        <Deconstruct time="2">
+            <Item identifier="plastic" amount="1" />
+        </Deconstruct>
+        <!-- 槽位中外观 -->
+        <InventoryIcon texture="%ModDir%/Content/Clothings/GirlsFrontline/HairStyles/M4sopⅡH_Hair_Sprite.png" sourcerect="194,319,144,185" origin="0.5,0.5" />
+        <!-- 地面上外观 -->
+        <Sprite name="Headset" texture="%ModDir%/Content/Clothings/GirlsFrontline/HairStyles/M4sopⅡH_Hair_Sprite.png" depth="0.6" sourcerect="194,319,144,185" origin="0.5,0.5" />
+        <!-- 地面上物理效果 -->
+        <Body radius="20" height="20" density="15" />
+        <!-- 穿着效果 -->
+        <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect">
+            <sprite name="M4sopⅡH_Hair_Sprite" texture="%ModDir%/Content/Clothings/GirlsFrontline/HairStyles/M4sopⅡH_Hair_Sprite.png" limb="Head" hidewearablesoftype="Hair" hidelimb="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.5" hideotherwearables="false" sourcerect="0,0,160,228" origin="0.585,0.35" />
+        </Wearable>
+        <!-- 物品栏(自注射) -->
+        <ItemContainer capacity="1" maxstacksize="1" autoinject="true">
+            <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="384,448,64,64" origin="0.5,0.5" />
+            <Containable items="chem,syringe" />
+        </ItemContainer>
+        <!-- 语音通话效果 -->
+        <WifiComponent range="35000.0" LinkToChat="true" MinChatMessageInterval="0.0"/>
+	</Item>
+
+
+
 </Items>
