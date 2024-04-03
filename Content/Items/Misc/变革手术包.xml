@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Items>
+    <MedicalKits name="变革手术包" identifier="PEnd_tsm_medicalkits_triton" description="可以简单制作并且没有任何负面效果的治疗变革创伤的手术包" subcategory="ProjectEndfield" category="Medical" Tags="smallitem,medical" maxstacksize="8" useinhealthinterface="true" cargocontaineridentifier="mediccrate" description="" scale="0.25" impactsoundtag="impact_soft" RequireAimToUse="True">
+        <Upgrade gameversion="0.10.0.0" scale="0.25" />
+        <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.05" notcampaign="true" />
+        <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.05" />
+        <PreferredContainer secondary="wreckmedcab,abandonedmedcab" minamount="1" maxamount="1" spawnprobability="0.05" />
+        <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="1" spawnprobability="0.05" />
+        <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.1" />
+        <PreferredContainer primary="medcab" secondary="medcontainer" />
+        <!--商店可出售（400mk（售卖价格是250mk））-->
+        <Price baseprice="250" buyingpricemultiplier="1.6" minavailable="5">
+            <Price storeidentifier="merchantoutpost" />
+            <Price storeidentifier="merchantcity" />
+            <Price storeidentifier="merchantresearch" />
+            <Price storeidentifier="merchantmilitary" />
+            <Price storeidentifier="merchantmine" />
+            <Price storeidentifier="merchantmedical"/>
+        </Price>
+        <Fabricate suitablefabricators="fabricator_endfield" requiredtime="10" amount="1">
+        <RequiredSkill identifier="medical" level="25" />
+        <RequiredItem identifier="antibleeding1" amount="1" />
+        <RequiredItem identifier="antidama1" amount="1" />
+        <RequiredItem identifier="antibleeding3" amount="1" />
+        </Fabricate>
+        <Deconstruct time="2" />
+        <SuitableTreatment identifier="triton_9C" suitability="100" />
+        <InventoryIcon texture="%ModDir%/Items/Misc/变革手术包.png" sourcerect="122,71,119,89" origin="0.5,0.5" />
+        <Sprite  texture="%ModDir%/Items/Misc/变革手术包.png" sourcerect="122,71,119,89" depth="0.6" origin="0.5,0.5" />
+        <Body width="60" height="60" density="10" />
+        <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="10" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+        <RequiredSkill identifier="medical" level="10" />
+        <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+            <Sound file="Content/Items/Medical/Bandage1.ogg" range="500" />
+            <Sound file="Content/Items/Medical/Bandage2.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect tags="medical" type="OnSuccess" target="UseTarget" duration="1.0">
+            <ReduceAffliction identifier="triton_9C" amount="100.0" />
+            <ReduceAffliction identifier="triton_7L" amount="100.0" />
+        </StatusEffect>
+        <StatusEffect tags="medical" type="OnFailure" target="UseTarget" duration="1.0">
+            <ReduceAffliction identifier="triton_9C" amount="100.0" />
+            <ReduceAffliction identifier="triton_7L" amount="100.0" />
+        </StatusEffect>
+        <!-- Remove the item when fully used -->
+        <StatusEffect type="OnBroken" target="This">
+            <Remove />
+        </StatusEffect>
+        </MeleeWeapon>
+        <SkillRequirementHint identifier="medical" level="10" />
+    </MedicalKits>
+
+</Items>
