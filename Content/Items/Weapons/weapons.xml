@@ -2,7 +2,7 @@
 <Items>
 <!--新增M4sopⅡ突击步枪-->
   <Item name="M4sopⅡ" identifier="Endfiled_M4sop" subcategory="终末地" category="weapon" cargocontaineridentifier="tsm_metalcrate" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" scale="0.135" impactsoundtag="impact_metal_light" description="">
-    <!--贴图-->
+    <!--贴图等待定位-->
     <InventoryIcon texture="%ModDir%/Content_2/png/AZ.png" sourcerect="212,282,753,228" origin="0.5,0.5" />
     <Sprite texture="%ModDir%/Content_2/png/AZ.png" sourcerect="212,282,753,228" depth="0.55" origin="0.5,0.5" />
     <!--局内售卖-->
