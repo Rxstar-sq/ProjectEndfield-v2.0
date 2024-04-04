@@ -285,6 +285,10 @@
     </Quality>
     <Upgrade gameversion="0.10.0.0" scale="0.5" />
   </Item>
+
+
+
+
 <!--子弹-->
    <Item name="kvbullet" identifier="Endfiled_kvbullet" subcategory="终末地" category="Weapon" interactthroughwalls="true" cargocontaineridentifier="metalcrate" hideinmenus="true" tags="smallitem,Endfiled_kvbullet" Scale="0.5" impactsoundtag="impact_metal_light">
     <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="832,960,64,64" origin="0.5,0.5" />
@@ -295,9 +299,9 @@
     <Projectile characterusable="false" hitscan="true" hitscancount="6" removeonhit="true" spread="18">
       <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,255,115,100" scalemultiplier="1,0.5" />
       <Attack structuredamage="1" targetforce="7.5" itemdamage="4" severlimbsprobability="0.2" penetration="0.15">
-       <Affliction identifier="gunshotwound" strength="6" />
-        <Affliction identifier="triton_9P" strength="6" />
-        <Affliction identifier="bleeding" strength="8" />
+       <Affliction identifier="gunshotwound" strength="7" />
+        <Affliction identifier="triton_9P" strength="7" />
+        <Affliction identifier="bleeding" strength="9" />
         <Affliction identifier="stun" strength="0.1" />
       </Attack>
       <StatusEffect type="OnImpact" target="UseTarget">
@@ -322,9 +326,9 @@
     <Projectile characterusable="false" hitscan="true" removeonhit="true">
       <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,200,200,175" scalemultiplier="1,0.8" />
       <Attack structuredamage="4" targetforce="7.5" itemdamage="4" severlimbsprobability="0.2" penetration="0.33">
-        <Affliction identifier="gunshotwound" strength="7" />
+        <Affliction identifier="gunshotwound" strength="8" />
         <Affliction identifier="triton_9P" strength="8" />
-        <Affliction identifier="bleeding" strength="10" />
+        <Affliction identifier="bleeding" strength="12" />
         <Affliction identifier="stun" strength="0.1" />
         <Affliction identifier="stun" strength="0.5" probability="0.01" />
       </Attack>
@@ -342,6 +346,8 @@
       </StatusEffect>
     </Projectile>
   </Item>
+
+  
 <!--弹匣-->
   <Item name="KV莫洛弹匣" identifier="Endfiled_kvmagazine" subcategory="终末地" description="" scale="0.23" category="weapon" health="12" maxstacksize="2" cargocontaineridentifier="tsm_metalcrate" tags="tsm_magazine,smallitem,tsm_zd,Endfiled_kvmagazine" impactsoundtag="impact_metal_light">
     <!--名称,ID,描述,缩放,分类,叠堆,货箱分类,标签,音效标签-->

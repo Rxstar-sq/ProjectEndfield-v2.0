@@ -38,6 +38,7 @@
         <StatusEffect tags="medical" type="OnSuccess" target="UseTarget" duration="1.0">
             <ReduceAffliction identifier="triton_9C" amount="100.0" />
             <ReduceAffliction identifier="triton_7L" amount="100.0" />
+            <!--就是说为什么还要额外新写一个9p变革（小声）-->
             <ReduceAffliction identifier="triton_9p" amount="100.0" />
             <Affliction type="damage" amount="-2.5" />
         </StatusEffect>
