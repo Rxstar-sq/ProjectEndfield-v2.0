@@ -441,7 +441,7 @@
       </StatusEffect>
     </Projectile>
   </Item>
-    <Item name="" identifier="Endfiled_M4bullet" category="Weapon" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="smallitem,Endfiled_QBZ191" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.5">
+    <Item name="" identifier="Endfiled_M4bullet" category="Weapon" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="smallitem,Endfiled_M4" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.5">
     <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="896,960,64,64" origin="0.5,0.5" />
     <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="195,282,17,6" depth="0.55" origin="0.5,0.5" />
     <Body width="17" height="6" density="30" />
@@ -612,7 +612,7 @@
     <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
     <Upgrade gameversion="0.10.0.0" scale="0.5" />
   </Item>
-    <Item name="M4sopII弹匣" identifier="Endfiled_M4magazine" subcategory="终末地" description="" scale="0.23" category="weapon" health="60" maxstacksize="3" cargocontaineridentifier="tsm_metalcrate" tags="tsm_magazine,smallitem,tsm_zd,Endfiled_QBZ191magazine" impactsoundtag="impact_metal_light">
+    <Item name="M4sopII弹匣" identifier="Endfiled_M4magazine" subcategory="终末地" description="" scale="0.23" category="weapon" health="60" maxstacksize="3" cargocontaineridentifier="tsm_metalcrate" tags="tsm_magazine,smallitem,tsm_zd,Endfiled_M4magazine" impactsoundtag="impact_metal_light">
     <InventoryIcon texture="%ModDir%/Content_2/png/M4sopⅡ突击步枪弹匣.png" sourcerect="994,408,85,132" />
     <Sprite texture="%ModDir%/Content_2/png/M4sopⅡ突击步枪弹匣.png" depth="0.55" sourcerect="994,408,85,132" origin="0.5,0.5" />
     <Body width="30" height="58" density="50" />
