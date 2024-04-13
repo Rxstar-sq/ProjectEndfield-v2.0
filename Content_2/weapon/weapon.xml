@@ -289,8 +289,8 @@
 <!--新增M4sopⅡ突击步枪-->
   <Item name="M4sopⅡ" identifier="Endfiled_M4sop" subcategory="终末地" category="weapon" cargocontaineridentifier="tsm_metalcrate" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" scale="0.135" impactsoundtag="impact_metal_light" description="">
     <!--贴图-->
-    <InventoryIcon texture="%ModDir%/Content_2/png/AZ.png" sourcerect="212,282,753,228" origin="0.5,0.5" />
-    <Sprite texture="%ModDir%/Content_2/png/AZ.png" sourcerect="212,282,753,228" depth="0.55" origin="0.5,0.5" />
+    <InventoryIcon texture="%ModDir%/Content_2/png/M4sopⅡ突击步枪.png" sourcerect="522,222,943,321" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content_2/png/M4sopⅡ突击步枪.png" sourcerect="522,222,943,321" depth="0.55" origin="0.5,0.5" />
     <!--局内售卖-->
      <Price baseprice="1924" buyingpricemultiplier="1" minleveldifficulty="0">
       <Price locationtype="city" multiplier="1.35" minavailable="1" maxavailable="3" />
@@ -364,11 +364,11 @@
       <StatusEffect type="OnUse" target="Contained">
         <Use />
       </StatusEffect>
-      <RequiredItems items="Endfiled_QBZ191magazine" type="Contained" msg="ItemMsgAmmoRequired" />
+      <RequiredItems items="Endfiled_M4magazine" type="Contained" msg="ItemMsgAmmoRequired" />
       <RequiredSkill identifier="weapons" level="45" />
     </RangedWeapon>
     <ItemContainer capacity="1" maxstacksize="1" hideitems="true" itempos="-35,-50" containedstateindicatorstyle="bullet" containedstateindicatorslot="0" containedspritedepth="0.56">
-      <Containable items="Endfiled_QBZ191magazine" />
+      <Containable items="Endfiled_M4magazine" />
       <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
       <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
       <SubContainer capacity="1" maxstacksize="1">
@@ -441,6 +441,35 @@
       </StatusEffect>
     </Projectile>
   </Item>
+    <Item name="" identifier="Endfiled_M4bullet" category="Weapon" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="smallitem,Endfiled_QBZ191" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.5">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="896,960,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="195,282,17,6" depth="0.55" origin="0.5,0.5" />
+    <Body width="17" height="6" density="30" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,200,200,175" scalemultiplier="1,0.8" />
+      <Attack structuredamage="4" targetforce="7.5" itemdamage="4" severlimbsprobability="0.2" penetration="0.33">
+        <Affliction identifier="gunshotwound" strength="7" />
+        <Affliction identifier="triton_9P" strength="7" />
+        <Affliction identifier="bleeding" strength="10" />
+        <Affliction identifier="stun" strength="0.1" />
+        <Affliction identifier="stun" strength="0.5" probability="0.01" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="2,2" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+        <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+      </StatusEffect>
+      <!-- hmg rounds should not exist outside magazines -->
+      <StatusEffect type="OnNotContained" target="This" stackable="false" delay="1">
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+
 
   
 <!--弹匣-->
@@ -583,4 +612,48 @@
     <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
     <Upgrade gameversion="0.10.0.0" scale="0.5" />
   </Item>
+    <Item name="M4sopII弹匣" identifier="Endfiled_M4magazine" subcategory="终末地" description="" scale="0.23" category="weapon" health="60" maxstacksize="3" cargocontaineridentifier="tsm_metalcrate" tags="tsm_magazine,smallitem,tsm_zd,Endfiled_QBZ191magazine" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="%ModDir%/Content_2/png/M4sopⅡ突击步枪弹匣.png" sourcerect="994,408,85,132" />
+    <Sprite texture="%ModDir%/Content_2/png/M4sopⅡ突击步枪弹匣.png" depth="0.55" sourcerect="994,408,85,132" origin="0.5,0.5" />
+    <Body width="30" height="58" density="50" />
+   <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="Endfiled_M4bullet" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="Endfiled_M4bullet" />
+      <StatusEffect type="OnUse" target="This" condition="-1" disabledeltatime="true">
+        <SpawnItem identifiers="Endfiled_M4bullet" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <PreferredContainer primary="Endfiled_kv" minamount="1" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="wreckarmcab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="wreckstoragecab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.1" />
+    <PreferredContainer primary="secarmcab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <PreferredContainer primary="abandonedsecarmcab" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <Price baseprice="234" buyingpricemultiplier="1" minleveldifficulty="0">
+      <Price locationtype="outpost" multiplier="1.5" minavailable="0" maxavailable="1" />
+      <Price locationtype="city" multiplier="1.35" minavailable="1" maxavailable="2" />
+      <Price locationtype="research" multiplier="1.25" sold="false" />
+      <Price locationtype="military" multiplier="1.10" minavailable="2" maxavailable="4" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <Deconstruct time="8">
+      <Item identifier="aluminium" />
+      <Item identifier="titaniumaluminiumalloy" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="false">
+      <RequiredSkill identifier="weapons" level="20" />
+      <RequiredItem identifier="potassium" amount="1" />
+      <RequiredItem identifier="iron" amount="2"/>
+      <RequiredItem identifier="lead" amount="1" />
+    </Fabricate>
+    <Fabricate suitablefabricators="fabricator" requiredtime="15" requiresrecipe="false" displayname="recycleitem">
+     <RequiredSkill identifier="weapons" level="20" />
+      <RequiredItem identifier="iron" />
+      <RequiredItem identifier="potassium" amount="0.5" />
+      <RequiredItem identifier="Endfiled_akmagazine" mincondition="0.0" usecondition="false" />
+    </Fabricate>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
+
 </Items>
