@@ -22,6 +22,7 @@
   <Item file="%ModDir%/Content/Items/Jobgear/Security/securityofficer_talent_items.xml" />
   <Item file="%ModDir%/Content/Items/Jobgear/Watchman/watchman_gear.xml" />
   <Item file="%ModDir%/Content/Items/Jobgear/misc.xml" />
+  <Item file="%ModDir%/ Content/Items/变革手术包.xml" />
   <Jobs file="%ModDir%/Content/Jobs.xml" />
   <NPCSets file="%ModDir%/Content/NPCPrefabs/OutpostNpcs.xml" />
   <Afflictions file="%ModDir%/Content_2/other/Afflictions.xml" />
@@ -52,4 +53,5 @@
   <Item file="%ModDir%/Content_Er/fabricator_endfield.xml" />
   <Text file="%ModDir%/Content_Er/chinese_simplified.xml" />
   <Text file="%ModDir%/Content_Er/english.xml" />
+ 
 </contentpackage>
